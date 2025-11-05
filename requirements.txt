@@ -1,0 +1,5 @@
+highrise-bot-sdk
+aiofiles
+aiohttp
+mutagen
+yt-dlp>=2025.5.22
