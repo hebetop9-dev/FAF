@@ -2,7 +2,7 @@
   "build": {
     "builder": "RailpackDefault",
     "buildCommand": "pip install -r requirements.txt",
-    "watchPaths": ["**/*.py", "requirements.txt"]
+    "watchPaths": ["**/*.py", "requirements.txt", "runtime.txt"]
   },
   "deploy": {
     "startCommand": "python run.py",
