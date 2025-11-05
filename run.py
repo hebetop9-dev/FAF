@@ -1,5 +1,6 @@
 import threading
 import asyncio
+import os
 from raybm import SEA, start_streaming
 from flask import Flask
 
@@ -19,9 +20,15 @@ flask_thread.start()
 # -----------------------
 
 async def main():
-    room_id = "6706b1dc20084804ef575ccb"
-    token = "75c96515b2b89f9a990c4c15796b4b883ab045193aafaa809043a3573afe249a"    
-    bot_instance = SEA()  
+    # Read room_id and token from Railway environment variables
+    room_id = os.getenv("ROOM_ID")
+    token = os.getenv("BOT_TOKEN")
+    
+    if not room_id or not token:
+        print("ERROR: ROOM_ID or BOT_TOKEN not set in environment variables!")
+        return
+    
+    bot_instance = SEA()
 
     # Start the streaming thread
     streaming_thread = threading.Thread(target=start_streaming, args=(bot_instance,))
